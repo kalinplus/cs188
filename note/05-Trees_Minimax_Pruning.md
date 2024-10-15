@@ -141,6 +141,8 @@ Consider the following game tree, with square nodes corresponding to terminal st
 > 
 > 可以发现：首先，我们获得了 1 代 1 号的 “3” ；然后我们在尝试获取 1 代 2 号时，先看到了 2 代 4 号的 “2”，这说明 $V_{12} \leq 2 < V_{11}$；换言之，无论 1 代 2 号的其余子代是什么，他都无法影响到 0 代；故“剪枝”。
 
+
+这样理解: alpha是max节点希望获得的最好值，beta是min节点允许max节点获得的最好值（实际上min节点会选择使其最小）。因此如果当前max节点搜索到v大于beta，那么上面的min节点根本不会选择这条路径（不会让max节点能有这么好的值），因此这条可以不看了，剪枝。
 ![](attachments/05_Trees-Minimax-Pruning-6.png)
 
 Implementing such pruning can reduce our runtime to as good as $O(b^{m/2} )$, effectively doubling our "solvable" depth. This pruning is exactly what the minimax algorithm with alpha-beta pruning does, and is implemented as follows:

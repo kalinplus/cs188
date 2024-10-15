@@ -73,6 +73,7 @@ Now, let’s spend some time discussing what constitutes a good heuristic.
 > 
 > ![](attachments/03_State-Spaces-Uninformed-Search-2.png)
 
+(I think that there is something unclear in 2. and 3., but f(n) <= f(A) is correct, because g(n) + h*(n) = g(A))
 And in case of revisiting the same node multiple times, the natural solution is to simply keep track of which states you’ve already expanded, and never expand them again. Tree search with this added optimization is known as **graph search**, and the pseudocode for it is presented below:
 
 ```python title="pseudocode for graph search"
@@ -114,7 +115,7 @@ function GRAPH-SEARCH(problem, frontier) return a solution or failure
 
 A couple of important highlights from the discussion above before we proceed: for heuristics that are **either admissible/consistent to be valid**, it must by definition be the case that **h(G) = 0** for any goal state G.
 
-Additionally, <u>Additionally, consistency is not just a stronger constraint than admissibility, consistency implies admissibility. This stems simply from the fact that if no edge costs are overestimates (as guaranteed by consistency), the total estimated cost from any node to a goal will also fail to be an overestimate</u>. This stems simply from the fact that if no edge costs are overestimates (as guaranteed by consistency), the total estimated cost from any node to a goal will also fail to be an overestimate.
+ <u>Additionally, consistency is not just a stronger constraint than admissibility, consistency implies admissibility. This stems simply from the fact that if no edge costs are overestimates (as guaranteed by consistency), the total estimated cost from any node to a goal will also fail to be an overestimate</u>. This stems simply from the fact that if no edge costs are overestimates (as guaranteed by consistency), the total estimated cost from any node to a goal will also fail to be an overestimate.
 
 > [!HELP]
 >
